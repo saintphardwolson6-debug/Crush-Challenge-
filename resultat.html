@@ -1,40 +1,42 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Résultats - Le Jeu Pro</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats du Quiz</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container result">
-    <h1>🎉 Félicitations <span id="player"></span> !</h1>
-    <p>Vous avez obtenu <span id="score"></span> points.</p>
-    <p>Partagez votre défi :</p>
 
-    <div class="share-buttons">
-      <a id="whatsapp" target="_blank">WhatsApp</a>
-      <a id="facebook" target="_blank">Facebook</a>
-      <a id="instagram" target="_blank">Instagram</a>
+    <div id="resultat-container" class="page active">
+        <div class="confetti-effect"></div> <main class="card resultat-card">
+            <h2 id="message-felicitation">Félicitations, [Nom du joueur]!</h2>
+            <p class="score-final">Votre score est de: <span id="score-display">X/10</span></p>
+
+            <div class="zone-partage">
+                <h3>Partagez votre résultat !</h3>
+                <p id="lien-partage-penalise"></p> <div class="boutons-partage-social">
+                    <button class="btn-social whatsapp" data-platform="whatsapp">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </button>
+                    <button class="btn-social instagram" data-platform="instagram">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </button>
+                    <button class="btn-social tiktok" data-platform="tiktok">
+                        <i class="fab fa-tiktok"></i> TikTok
+                    </button>
+                    <button class="btn-social facebook" data-platform="facebook">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </button>
+                </div>
+            </div>
+
+            <a href="classement.html" class="bouton-secondaire">Voir le Classement</a>
+            <a href="index.html" class="bouton-principal">Rejouer</a>
+        </main>
     </div>
 
-    <button onclick="window.location.href='index.html'">Créer mon propre défi</button>
-  </div>
-
-  <script>
-    const name = localStorage.getItem("playerName") || "Joueur";
-    const score = localStorage.getItem("playerScore") || 0;
-    const uid = `${name.toLowerCase()}_${Math.floor(Math.random()*10000)}`;
-    
-    document.getElementById("player").textContent = name;
-    document.getElementById("score").textContent = score;
-
-    const shareText = `Je viens de jouer à *Le Jeu Pro*! 🔥 Mon score: ${score}/10. Viens essayer mon défi 👉`;
-    const shareURL = window.location.origin + window.location.pathname + "?uid=" + uid;
-
-    document.getElementById("whatsapp").href = `https://wa.me/?text=${encodeURIComponent(shareText + " " + shareURL)}`;
-    document.getElementById("facebook").href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareURL)}`;
-    document.getElementById("instagram").href = `https://www.instagram.com/?url=${encodeURIComponent(shareURL)}`;
-  </script>
+    <script src="script.js"></script> 
+    <script src="https://kit.fontawesome.com/votre_kit_fontawesome.js" crossorigin="anonymous"></script> 
 </body>
 </html>
