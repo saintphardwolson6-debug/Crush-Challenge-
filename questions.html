@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Créer mon défi</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/script.js" defer></script>
+</head>
+<body>
+<header>
+<img src="assets/logo.png" class="logo pulse" alt="Logo">
+<h1>Créer votre défi Crush</h1>
+</header>
+
+<main>
+<form id="hostForm">
+  <label>Votre nom :</label>
+  <input type="text" name="hostName" required><br>
+
+  <label>Couleur préférée :</label><input type="text" name="color"><br>
+  <label>Plat préféré :</label><input type="text" name="food"><br>
+  <label>Film préféré :</label><input type="text" name="movie"><br>
+  <label>Musique préférée :</label><input type="text" name="music"><br>
+  <label>Hobby préféré :</label><input type="text" name="hobby"><br>
+  <label>Animal préféré :</label><input type="text" name="animal"><br>
+  <label>Destination rêvée :</label><input type="text" name="travel"><br>
+  <label>Super-héros préféré :</label><input type="text" name="hero"><br>
+  <label>Chanson préférée :</label><input type="text" name="song"><br>
+  <label>Boisson préférée :</label><input type="text" name="drink"><br>
+
+  <button type="submit" class="btn pulse">Générer mon lien</button>
+</form>
+
+<div id="generatedLink" style="display:none">
+  <p>Lien à partager :</p>
+  <input type="text" id="hostLink" readonly>
+  <button onclick="copyLink()">📋 Copier le lien</button>
+</div>
+</main>
+</body>
+</html>
