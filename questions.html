@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Questions - Crush Challenge</title>
 <link rel="stylesheet" href="css/style.css">
-<script src="js/script.js" defer></script>
+<script src="js/questions.js" defer></script>
 </head>
 <body>
 <header>
@@ -19,104 +19,123 @@
 <main>
 <form id="quizForm">
 
-<!-- QUESTION TEMPLATE -->
+<!-- Question 1 -->
 <div class="question" data-q="1">
 <p>1/10 : Quelle est ta couleur préférée ?</p>
+<div class="options">
 <button type="button" class="optionBtn" data-answer="Rouge">Rouge</button>
 <button type="button" class="optionBtn" data-answer="Bleu">Bleu</button>
 <button type="button" class="optionBtn" data-answer="Vert">Vert</button>
 <button type="button" class="optionBtn" data-answer="Jaune">Jaune</button>
-<br>
+</div>
 <button type="button" class="nextBtn btn" disabled>Suivant ➡️</button>
 </div>
 
+<!-- Question 2 -->
 <div class="question" data-q="2" style="display:none">
 <p>2/10 : Quel est ton plat préféré ?</p>
+<div class="options">
 <button type="button" class="optionBtn" data-answer="Pizza">Pizza</button>
 <button type="button" class="optionBtn" data-answer="Sushi">Sushi</button>
 <button type="button" class="optionBtn" data-answer="Burger">Burger</button>
 <button type="button" class="optionBtn" data-answer="Salade">Salade</button>
-<br>
+</div>
 <button type="button" class="nextBtn btn" disabled>Suivant ➡️</button>
 </div>
 
+<!-- Question 3 -->
 <div class="question" data-q="3" style="display:none">
 <p>3/10 : Quel est ton film préféré ?</p>
-<button type="button" class="optionBtn" data-answer="Titanic">Titanic</button>
-<button type="button" class="optionBtn" data-answer="Avengers">Avengers</button>
+<div class="options">
 <button type="button" class="optionBtn" data-answer="Inception">Inception</button>
-<button type="button" class="optionBtn" data-answer="La La Land">La La Land</button>
-<br>
+<button type="button" class="optionBtn" data-answer="Titanic">Titanic</button>
+<button type="button" class="optionBtn" data-answer="Avatar">Avatar</button>
+<button type="button" class="optionBtn" data-answer="Avengers">Avengers</button>
+</div>
 <button type="button" class="nextBtn btn" disabled>Suivant ➡️</button>
 </div>
 
+<!-- Question 4 -->
 <div class="question" data-q="4" style="display:none">
-<p>4/10 : Quel est ton animal préféré ?</p>
-<button type="button" class="optionBtn" data-answer="Chat">Chat</button>
-<button type="button" class="optionBtn" data-answer="Chien">Chien</button>
-<button type="button" class="optionBtn" data-answer="Oiseau">Oiseau</button>
-<button type="button" class="optionBtn" data-answer="Poisson">Poisson</button>
-<br>
+<p>4/10 : Quelle est ta musique préférée ?</p>
+<div class="options">
+<button type="button" class="optionBtn" data-answer="Pop">Pop</button>
+<button type="button" class="optionBtn" data-answer="Rap">Rap</button>
+<button type="button" class="optionBtn" data-answer="Rock">Rock</button>
+<button type="button" class="optionBtn" data-answer="Electro">Electro</button>
+</div>
 <button type="button" class="nextBtn btn" disabled>Suivant ➡️</button>
 </div>
 
+<!-- Question 5 -->
 <div class="question" data-q="5" style="display:none">
 <p>5/10 : Quelle est ta saison préférée ?</p>
+<div class="options">
 <button type="button" class="optionBtn" data-answer="Printemps">Printemps</button>
 <button type="button" class="optionBtn" data-answer="Été">Été</button>
 <button type="button" class="optionBtn" data-answer="Automne">Automne</button>
 <button type="button" class="optionBtn" data-answer="Hiver">Hiver</button>
-<br>
+</div>
 <button type="button" class="nextBtn btn" disabled>Suivant ➡️</button>
 </div>
 
+<!-- Question 6 -->
 <div class="question" data-q="6" style="display:none">
-<p>6/10 : Quelle est ta boisson préférée ?</p>
-<button type="button" class="optionBtn" data-answer="Eau">Eau</button>
+<p>6/10 : Quel est ton animal préféré ?</p>
+<div class="options">
+<button type="button" class="optionBtn" data-answer="Chat">Chat</button>
+<button type="button" class="optionBtn" data-answer="Chien">Chien</button>
+<button type="button" class="optionBtn" data-answer="Oiseau">Oiseau</button>
+<button type="button" class="optionBtn" data-answer="Poisson">Poisson</button>
+</div>
+<button type="button" class="nextBtn btn" disabled>Suivant ➡️</button>
+</div>
+
+<!-- Question 7 -->
+<div class="question" data-q="7" style="display:none">
+<p>7/10 : Quel est ton pays préféré ?</p>
+<div class="options">
+<button type="button" class="optionBtn" data-answer="France">France</button>
+<button type="button" class="optionBtn" data-answer="Italie">Italie</button>
+<button type="button" class="optionBtn" data-answer="Japon">Japon</button>
+<button type="button" class="optionBtn" data-answer="USA">USA</button>
+</div>
+<button type="button" class="nextBtn btn" disabled>Suivant ➡️</button>
+</div>
+
+<!-- Question 8 -->
+<div class="question" data-q="8" style="display:none">
+<p>8/10 : Quelle est ta boisson préférée ?</p>
+<div class="options">
+<button type="button" class="optionBtn" data-answer="Café">Café</button>
+<button type="button" class="optionBtn" data-answer="Thé">Thé</button>
 <button type="button" class="optionBtn" data-answer="Jus">Jus</button>
 <button type="button" class="optionBtn" data-answer="Soda">Soda</button>
-<button type="button" class="optionBtn" data-answer="Café">Café</button>
-<br>
+</div>
 <button type="button" class="nextBtn btn" disabled>Suivant ➡️</button>
 </div>
 
-<div class="question" data-q="7" style="display:none">
-<p>7/10 : Quel est ton hobby préféré ?</p>
+<!-- Question 9 -->
+<div class="question" data-q="9" style="display:none">
+<p>9/10 : Quel est ton hobby préféré ?</p>
+<div class="options">
 <button type="button" class="optionBtn" data-answer="Sport">Sport</button>
 <button type="button" class="optionBtn" data-answer="Lecture">Lecture</button>
 <button type="button" class="optionBtn" data-answer="Jeux vidéo">Jeux vidéo</button>
-<button type="button" class="optionBtn" data-answer="Musique">Musique</button>
-<br>
+<button type="button" class="optionBtn" data-answer="Cuisine">Cuisine</button>
+</div>
 <button type="button" class="nextBtn btn" disabled>Suivant ➡️</button>
 </div>
 
-<div class="question" data-q="8" style="display:none">
-<p>8/10 : Quelle est ta destination de rêve ?</p>
-<button type="button" class="optionBtn" data-answer="Paris">Paris</button>
-<button type="button" class="optionBtn" data-answer="Tokyo">Tokyo</button>
-<button type="button" class="optionBtn" data-answer="New York">New York</button>
-<button type="button" class="optionBtn" data-answer="Hawaii">Hawaii</button>
-<br>
-<button type="button" class="nextBtn btn" disabled>Suivant ➡️</button>
-</div>
-
-<div class="question" data-q="9" style="display:none">
-<p>9/10 : Quel est ton sport préféré ?</p>
-<button type="button" class="optionBtn" data-answer="Football">Football</button>
-<button type="button" class="optionBtn" data-answer="Basketball">Basketball</button>
-<button type="button" class="optionBtn" data-answer="Tennis">Tennis</button>
-<button type="button" class="optionBtn" data-answer="Natation">Natation</button>
-<br>
-<button type="button" class="nextBtn btn" disabled>Suivant ➡️</button>
-</div>
-
+<!-- Question 10 -->
 <div class="question" data-q="10" style="display:none">
-<p>10/10 : Quel est ton dessert préféré ?</p>
-<button type="button" class="optionBtn" data-answer="Glace">Glace</button>
-<button type="button" class="optionBtn" data-answer="Chocolat">Chocolat</button>
-<button type="button" class="optionBtn" data-answer="Tarte">Tarte</button>
-<button type="button" class="optionBtn" data-answer="Fruit">Fruit</button>
-<br>
+<p>10/10 : Quelle est ta fête préférée ?</p>
+<div class="options">
+<button type="button" class="optionBtn" data-answer="Noël">Noël</button>
+<button type="button" class="optionBtn" data-answer="Anniversaire">Anniversaire</button>
+<button type="button" class="optionBtn" data-answer="Nouvel An">Nouvel An</button>
+<button type="button" class="optionBtn" data-answer="Halloween">Halloween</button>
+</div>
 <button type="button" class="nextBtn btn" disabled>Terminer ✅</button>
 </div>
 
