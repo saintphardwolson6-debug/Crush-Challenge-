@@ -1,34 +1,50 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Crush-Challenge — Questions</title>
-  <link rel="stylesheet" href="css/style.css" />
-</head>
-<body class="page-questions">
-  <header class="topbar small">
-    <img src="assets/images/logo.png" alt="logo" class="logo" />
-    <div class="progress" id="progress">1/10</div>
-  </header>
+const questions = [
+  {q:"Quel est ton plat préféré ?", choices:["Pizza","Burger","Tacos","Poulet grillé"], answer:0},
+  {q:"Ta couleur favorite ?", choices:["Rouge","Bleu","Vert","Noir"], answer:1},
+  {q:"Ton sport préféré ?", choices:["Football","Basketball","Natation","Boxe"], answer:0},
+  {q:"Film romantique préféré ?", choices:["Titanic","After","The Notebook","LOL"], answer:2},
+  {q:"Boisson favorite ?", choices:["Jus","Coca","Café","Eau"], answer:0},
+  {q:"Ton animal préféré ?", choices:["Chat","Chien","Lapin","Cheval"], answer:1},
+  {q:"Ta saison préférée ?", choices:["Été","Hiver","Printemps","Automne"], answer:0},
+  {q:"Si tu pouvais voyager ?", choices:["Paris","Bali","New York","Tokyo"], answer:1},
+  {q:"Appli préférée ?", choices:["TikTok","Instagram","Snapchat","YouTube"], answer:0},
+  {q:"Ton style musical ?", choices:["Rap","Pop","Afro","Kompa"], answer:3}
+];
 
-  <main class="card question-card">
-    <h2 id="questionText">Question ici</h2>
-    <div id="choices" class="choices"></div>
+let current = 0;
+let score = 0;
 
-    <div class="controls bottom">
-      <button id="skipBtn" class="btn ghost">Passer</button>
-    </div>
-  </main>
+const questionEl = document.getElementById('question');
+const choicesEl = document.getElementById('choices');
+const progressEl = document.getElementById('progress-text');
+const clickSound = document.getElementById('clickSound');
 
-  <!-- sons -->
-  <audio id="clickSound" src="assets/sounds/click.mp3"></audio>
-  <audio id="correctSound" src="assets/sounds/correct.mp3"></audio>
+function loadQuestion() {
+  const q = questions[current];
+  questionEl.textContent = q.q;
+  choicesEl.innerHTML = '';
 
-  <!-- confetti lib -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  q.choices.forEach((choice, i) => {
+    const btn = document.createElement('button');
+    btn.classList.add('choice');
+    btn.textContent = choice;
+    btn.onclick = () => selectChoice(i);
+    choicesEl.appendChild(btn);
+  });
 
-  <script src="js/questions.js" defer></script>
-  <script src="js/script.js" defer></script>
-</body>
-</html>
+  progressEl.textContent = `Question ${current + 1}/10`;
+}
+
+function selectChoice(index) {
+  clickSound.play();
+  if(index === questions[current].answer) score++;
+  current++;
+  if(current < questions.length) {
+    loadQuestion();
+  } else {
+    localStorage.setItem('score', score);
+    window.location.href = 'resultat.html';
+  }
+}
+
+loadQuestion();
