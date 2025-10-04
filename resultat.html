@@ -5,36 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Résultat - Crush Challenge</title>
 <link rel="stylesheet" href="css/style.css">
-<script src="js/script.js" defer></script>
+<script src="js/resultat.js" defer></script>
 </head>
 <body>
 <header>
-<img src="assets/logo.png" class="logo pulse" alt="Logo">
-<h1>Félicitations 🎉</h1>
-<p id="hostNameDisplay">Nom du joueur : ...</p>
+<img src="assets/logo.png" class="logo pulse" alt="Logo Crush Challenge">
+<h1>Félicitations, <span id="hostName"></span> ! 🎉</h1>
+<p>Ton score : <span id="scoreDisplay">0/10</span></p>
 </header>
 
 <main>
-<p>Ton score : <span id="scoreFinal">0</span>/10</p>
-
-<p>Lien pour partager ton défi :</p>
+<div class="share-section">
+<label>Ton lien unique :</label>
 <input type="text" id="uidLink" readonly>
-<button onclick="copyLink()">📋 Copier</button>
+<button onclick="copyLink()" class="btn">Copier le lien</button>
 
-<h3>Partager sur :</h3>
-<div class="social-share">
+<p>Partager sur les réseaux :</p>
 <a href="#" id="shareWA" target="_blank">WhatsApp</a>
 <a href="#" id="shareFB" target="_blank">Facebook</a>
 <a href="#" id="shareIG" target="_blank">Instagram</a>
 <a href="#" id="shareTT" target="_blank">TikTok</a>
 </div>
 
-<h2>Classement des joueurs</h2>
-<table id="scoreTable">
-<tr><th>Joueur</th><th>Score</th></tr>
-</table>
+<button onclick="rejouer()" class="btn pulse">Rejouer 🔄</button>
 
-<a href="index.html" class="btn pulse">Rejouer / Créer nouveau défi</a>
+<canvas id="confetti"></canvas>
+<audio id="victorySound" src="assets/victory.mp3" autoplay></audio>
 </main>
 </body>
 </html>
