@@ -78,4 +78,47 @@ if(quizForm){
         const bar = document.getElementById("progressBar");
         if(bar) bar.style.width = ((current/total)*100) + "%";
     }
-}
+document.addEventListener("DOMContentLoaded", ()=>{
+    const questions = document.querySelectorAll(".question");
+    let currentQ = 0;
+    let score = 0;
+
+    function showQuestion(n){
+        questions.forEach(q => q.style.display="none");
+        if(n<questions.length) questions[n].style.display="block";
+    }
+    showQuestion(currentQ);
+
+    questions.forEach(q=>{
+        const options = q.querySelectorAll(".optionBtn");
+        const nextBtn = q.querySelector(".nextBtn");
+        options.forEach(opt=>{
+            opt.addEventListener("click",()=>{
+                // Save reponse: premier bouton = correct pour exemple
+                if(opt.dataset.answer === options[0].dataset.answer) score++;
+                // Active bouton suivant
+                nextBtn.disabled = false;
+                // Marque visuellement
+                opt.classList.add(opt.dataset.answer === options[0].dataset.answer ? "correct":"wrong");
+            });
+        });
+
+        nextBtn.addEventListener("click",()=>{
+            currentQ++;
+            updateProgress(currentQ, questions.length);
+            if(currentQ>=questions.length){
+                const uid = localStorage.getItem("lastUID");
+                localStorage.setItem(uid, score);
+                localStorage.setItem("lastScore", score);
+                window.location.href = "resultat.html";
+            } else {
+                showQuestion(currentQ);
+            }
+        });
+    });
+
+    function updateProgress(current,total){
+        const bar = document.getElementById("progressBar");
+        if(bar) bar.style.width = ((current/total)*100)+"%";
+    }
+});
