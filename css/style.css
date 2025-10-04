@@ -1,34 +1,216 @@
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: 'Roboto', sans-serif;
+/* Importation d'une belle police moderne */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+:root {
+    --couleur-primaire: #FF4081; /* Rose vif et Énergique */
+    --couleur-secondaire: #448AFF; /* Bleu clair */
+    --couleur-texte: #2a2a2a;
+    --couleur-fond: #e0f7fa; /* Fond très clair et agréable */
+    --couleur-carte: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  background: url('assets/background.jpg') no-repeat center center fixed;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--couleur-fond);
+    color: var(--couleur-texte);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-image: radial-gradient(circle at 10% 20%, rgba(255, 205, 240, 0.4) 0%, rgba(144, 187, 241, 0.4) 90%);
 }
 
-.container {
-  text-align: center;
-  background: rgba(0,0,0,0.5);
-  padding: 30px;
-  border-radius: 15px;
-  color: #fff;
+/* Structure générale */
+.page {
+    width: 100%;
+    max-width: 650px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+.page.active { opacity: 1; }
+
+.card {
+    background-color: var(--couleur-carte);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-top: 20px;
 }
 
-button {
-  padding: 10px 20px;
-  margin-top: 10px;
-  background-color: #ff4081;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+/* Header & Logo */
+header { margin-bottom: 25px; }
+.logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 5px solid var(--couleur-primaire);
+    box-shadow: 0 0 15px var(--couleur-primaire);
+    animation: bounce 2s infinite;
+}
+h1 {
+    color: var(--couleur-primaire);
+    font-weight: 800;
+    font-size: 2.5em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+.slogan { color: #666; font-style: italic; }
+
+/* Boutons et Inputs */
+.bouton-principal, .bouton-secondaire, .option-btn {
+    padding: 14px 30px;
+    border: none;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    margin: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.1em;
 }
 
-button:hover { background-color: #e91e63; }
+.bouton-principal {
+    background: linear-gradient(45deg, var(--couleur-primaire), #FF7DAB);
+    color: white;
+    box-shadow: 0 6px 20px rgba(255, 64, 129, 0.6);
+}
+.bouton-principal:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 25px rgba(255, 64, 129, 0.8); }
+
+.bouton-secondaire {
+    background-color: #f0f0f0;
+    color: var(--couleur-texte);
+    border: 2px solid #ccc;
+}
+.bouton-secondaire:hover { background-color: #e0e0e0; transform: translateY(-2px); }
+
+#nom-joueur {
+    padding: 12px;
+    border: 3px solid var(--couleur-secondaire);
+    border-radius: 10px;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+    width: 80%;
+    max-width: 350px;
+    outline: none;
+}
+#nom-form { display: flex; flex-direction: column; align-items: center; }
+
+/* Page Questions */
+.quiz-card { padding: 0; }
+.header-quiz {
+    background-color: var(--couleur-primaire);
+    color: white;
+    padding: 20px;
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2em;
+}
+#progression { font-weight: 700; }
+#question-text {
+    padding: 25px;
+    font-size: 1.4em;
+    font-weight: 600;
+    min-height: 80px;
+}
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding: 0 30px 30px 30px;
+}
+.option-btn {
+    background-color: var(--couleur-secondaire);
+    color: white;
+    font-size: 1em;
+    min-height: 70px;
+    line-height: 1.2;
+    border: 3px solid transparent;
+}
+.option-btn:hover:not(.selected) { background-color: #3f7cdc; }
+
+/* États de Réponse */
+.option-btn.correct { background-color: #4CAF50 !important; border-color: #388E3C; animation: pulse-correct 0.5s 3; }
+.option-btn.incorrect { background-color: #F44336 !important; border-color: #D32F2F; animation: shake 0.5s; }
+
+/* Page Résultats */
+.resultat-card { border: 5px solid var(--couleur-primaire); animation: fadeIn 1s; }
+#message-felicitation {
+    color: var(--couleur-secondaire);
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    font-weight: 800;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.score-final { font-size: 1.8em; margin: 15px 0; }
+#score-display { color: var(--couleur-primaire); font-weight: 800; font-size: 1.2em; }
+
+/* Partage Social */
+.zone-partage { margin-top: 30px; padding: 20px 0; border-top: 1px dashed #ddd; border-bottom: 1px dashed #ddd; }
+.boutons-partage-social { display: flex; justify-content: center; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+.btn-social { padding: 10px 18px; border-radius: 50px; color: white; text-transform: none; }
+.btn-social i { margin-right: 8px; }
+.whatsapp { background-color: #25D366; }
+.tiktok { background-color: #000000; }
+.instagram { background-color: #E1306C; }
+
+/* Classement */
+.zone-classement { margin-top: 30px; }
+.zone-classement h3 { color: var(--couleur-primaire); margin-bottom: 15px; }
+#liste-classement {
+    list-style: none;
+    padding: 0;
+    width: 80%;
+    margin: 0 auto;
+}
+#liste-classement li {
+    background-color: #f9f9f9;
+    margin: 8px 0;
+    padding: 12px 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+#liste-classement li:nth-child(1) { background-color: #FFEB3B; font-size: 1.1em; border: 2px solid gold; } /* 1er Place */
+#liste-classement li:nth-child(2) { background-color: #CFD8DC; } /* 2e Place */
+#liste-classement li:nth-child(3) { background-color: #FFCCBC; } /* 3e Place */
+
+.actions-finales { margin-top: 30px; }
+
+
+/* Animations */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+@keyframes pulse-correct {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
