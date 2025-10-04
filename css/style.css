@@ -1,51 +1,34 @@
-body {
+body, html {
   margin: 0;
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #4e54c8, #8f94fb);
-  color: white;
+  padding: 0;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background: url('assets/background.jpg') no-repeat center center fixed;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
 .container {
   text-align: center;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0,0,0,0.5);
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
-  animation: fadeIn 1s ease-in-out;
+  color: #fff;
 }
 
 button {
-  margin-top: 15px;
-  padding: 10px 25px;
-  font-size: 1.1em;
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: #ff4081;
+  color: #fff;
   border: none;
-  background: #ffce00;
-  color: #222;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  background: #fff700;
-  transform: scale(1.05);
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.8); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-.share-buttons a {
-  margin: 10px;
-  background: white;
-  color: #222;
-  padding: 10px 15px;
   border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
+  cursor: pointer;
 }
+
+button:hover { background-color: #e91e63; }
