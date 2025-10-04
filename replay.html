@@ -3,19 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rejouer - Crush Challenge</title>
+<title>Résultats & Classement - Crush Challenge</title>
 <link rel="stylesheet" href="css/style.css">
+<script src="js/script.js" defer></script>
 </head>
 <body>
+<canvas id="confetti"></canvas>
 <header>
-<img src="assets/logo.png" class="logo pulse" alt="Logo">
-<h1>Rejouer ou recommencer 🎯</h1>
+<img src="assets/logo.png" class="logo pulse" alt="Logo Crush Challenge">
+<h1>Félicitations <span id="hostName"></span> !</h1>
 </header>
 
 <main>
-<a href="questions.html" class="btn pulse">🎯 Créer un nouveau défi</a>
-<a href="jouer.html" class="btn pulse">▶️ Jouer un défi</a>
-<a href="index.html" class="btn pulse">🏠 Accueil</a>
+<!-- SECTION RESULTAT HÔTE -->
+<section id="hostResult">
+<p>Vous avez obtenu : <span id="scoreDisplay"></span> points</p>
+<label for="uidLink">Lien de partage :</label>
+<input type="text" id="uidLink" readonly>
+<button class="btn" onclick="copyLink()">Copier le lien</button>
+
+<div class="share-section">
+<a href="#" target="_blank" id="shareWA">WhatsApp</a>
+<a href="#" target="_blank" id="shareFB">Facebook</a>
+<a href="#" target="_blank" id="shareIG">Instagram</a>
+<a href="#" target="_blank" id="shareTT">TikTok</a>
+</div>
+</section>
+
+<hr style="margin:30px 0; border:1px solid #fff; width:80%;">
+
+<!-- SECTION CLASSEMENT -->
+<section id="scoreTableSection">
+<h2>Classement des participants</h2>
+<table id="scoreTable">
+<tr><th>Nom</th><th>Score</th></tr>
+<!-- JS va remplir les lignes -->
+</table>
+</section>
+
+<br>
+<button class="btn" onclick="rejouer()">Rejouer</button>
+<button class="btn" onclick="creerDefi()">Créer votre propre défi</button>
 </main>
+
+<audio id="music" src="assets/music.mp3" autoplay loop></audio>
+<button id="muteBtn">🔊 Couper le son</button>
 </body>
-</html> 
+</html>
