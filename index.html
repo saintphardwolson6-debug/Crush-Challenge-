@@ -1,28 +1,49 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Mon Jeu Fun</title>
-    <link rel="stylesheet" href="style/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Crush-Challenge — Accueil</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
-<body>
-    <div class="container accueil">
-        <h1>🎉 Mon Jeu Fun 🎉</h1>
-        <input type="text" id="playerName" placeholder="Entrez votre nom">
-        <button id="startBtn">Kòmanse</button>
+<body class="page-acceuil">
+  <header class="topbar">
+    <img src="assets/images/logo.png" alt="Crush-Challenge" class="logo" />
+    <h1>Crush-Challenge</h1>
+  </header>
+
+  <main class="card acceuil-card">
+    <h2>Bienvenue !</h2>
+    <p>Testez votre compatibilité avec votre crush. Répondez aux 10 questions — partagez vos résultats !</p>
+
+    <label class="input-label">Entrez votre nom</label>
+    <input id="playerName" type="text" placeholder="Ex: Tchoulo" />
+
+    <div class="controls">
+      <button id="startBtn" class="btn primary">Kòmanse</button>
+      <a href="classement.html" class="btn ghost">Voir le classement</a>
     </div>
 
-    <script>
-        const startBtn = document.getElementById('startBtn');
-        startBtn.addEventListener('click', () => {
-            const name = document.getElementById('playerName').value.trim();
-            if(name === '') {
-                alert('Veuillez entrer votre nom !');
-                return;
-            }
-            localStorage.setItem('playerName', name);
-            window.location.href = 'questions.html';
-        });
-    </script>
+    <p class="small">Le jeu est en français • Animations & son inclus</p>
+  </main>
+
+  <footer class="footer">© Crush-Challenge</footer>
+
+  <script>
+    document.getElementById('startBtn').addEventListener('click', () => {
+      const name = document.getElementById('playerName').value.trim();
+      if (!name) {
+        alert("Veuillez entrer votre nom pour commencer.");
+        return;
+      }
+      localStorage.setItem('playerName', name);
+      // reset old state
+      localStorage.removeItem('answers');
+      localStorage.removeItem('score');
+      window.location.href = 'host.html';
+    });
+  </script>
 </body>
 </html>
