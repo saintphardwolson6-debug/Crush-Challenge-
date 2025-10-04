@@ -8,21 +8,13 @@ if(music && muteBtn){
     });
 }
 
-/* ===== COPY LINK ===== */
-function copyLink(){
-    const input = document.getElementById("uidLink");
-    input.select();
-    document.execCommand("copy");
-    alert("Lien copié ✅");
-}
-
 /* ===== GENERATE UID ===== */
 function generateUID(name){
     const random = Math.floor(Math.random() * 10000);
     return name + "-" + random;
 }
 
-/* ===== INDEX.HTML - COMMENCER ===== */
+/* ===== INDEX.HTML ===== */
 const startForm = document.getElementById("startForm");
 if(startForm){
     startForm.addEventListener("submit",(e)=>{
@@ -30,8 +22,11 @@ if(startForm){
         const playerName = document.getElementById("playerName").value;
         localStorage.setItem("hostName", playerName);
 
+        const uid = generateUID(playerName);
+        localStorage.setItem("lastUID", uid);
+
         // Share links dynamiques
-        const url = window.location.origin + "/index.html";
+        const url = window.location.origin + "/jouer.html?uid=" + uid;
         if(document.getElementById("shareWA")) document.getElementById("shareWA").href="https://wa.me/?text=Viens%20jouer%20au%20Crush%20Challenge%20👉%20"+encodeURIComponent(url);
         if(document.getElementById("shareFB")) document.getElementById("shareFB").href="https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(url);
         if(document.getElementById("shareIG")) document.getElementById("shareIG").href="https://www.instagram.com/?url="+encodeURIComponent(url);
@@ -41,7 +36,7 @@ if(startForm){
     });
 }
 
-/* ===== QUESTIONS.HTML - QUIZ LOGIC ===== */
+/* ===== QUESTIONS.HTML ===== */
 const quizForm = document.getElementById("quizForm");
 if(quizForm){
     let currentQ = 0;
@@ -58,7 +53,7 @@ if(quizForm){
         const btns = q.querySelectorAll(".optionBtn");
         btns.forEach(btn=>{
             btn.addEventListener("click",()=>{
-                // Vérification: 1er bouton = bonne réponse
+                // Vérification : premier bouton = bonne réponse
                 if(btn.dataset.answer === btns[0].dataset.answer) score++;
                 btn.classList.add(btn.dataset.answer === btns[0].dataset.answer ? "correct" : "wrong");
                 setTimeout(()=>{
@@ -69,13 +64,12 @@ if(quizForm){
 
                     if(currentQ >= questions.length){
                         const hostName = localStorage.getItem("hostName");
-                        const uid = generateUID(hostName);
-                        localStorage.setItem(uid, score); // score total
-                        localStorage.setItem("lastUID", uid);
+                        const uid = localStorage.getItem("lastUID");
+                        localStorage.setItem(uid, score);
                         localStorage.setItem("lastScore", score);
                         window.location.href = "resultat.html";
                     }
-                },500);
+                },300);
             });
         });
     });
