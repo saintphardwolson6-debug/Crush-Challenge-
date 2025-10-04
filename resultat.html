@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résultat - Crush Challenge</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/script.js" defer></script>
+</head>
+<body>
+<header>
+<img src="assets/logo.png" class="logo pulse" alt="Logo">
+<h1>🎉 Résultat</h1>
+</header>
+
+<main>
+<p>Ton score : <span id="scoreFinal">0</span>/10</p>
+
+<p>Lien UID :</p>
+<input type="text" id="uidLink" readonly value="https://tonlien.github.io/Crush-Challenge/?uid=ABC123">
+<button onclick="copyLink()">📋 Copier</button>
+
+<h3>Partager ton défi :</h3>
+<div class="social-share">
+  <a href="#" id="shareWA" target="_blank">WhatsApp</a>
+  <a href="#" id="shareFB" target="_blank">Facebook</a>
+  <a href="#" id="shareTW" target="_blank">Twitter</a>
+</div>
+
+<a href="./replay.html" class="btn pulse">Rejouer</a>
+</main>
+</body>
+</html>
