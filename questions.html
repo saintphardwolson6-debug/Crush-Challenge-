@@ -19,13 +19,15 @@
 <main>
 <form id="quizForm">
 
-<!-- Questions 1 à 10 -->
+<!-- QUESTION TEMPLATE -->
 <div class="question" data-q="1">
 <p>1/10 : Quelle est ta couleur préférée ?</p>
 <button type="button" class="optionBtn" data-answer="Rouge">Rouge</button>
 <button type="button" class="optionBtn" data-answer="Bleu">Bleu</button>
 <button type="button" class="optionBtn" data-answer="Vert">Vert</button>
 <button type="button" class="optionBtn" data-answer="Jaune">Jaune</button>
+<br>
+<button type="button" class="nextBtn btn" disabled>Suivant ➡️</button>
 </div>
 
 <div class="question" data-q="2" style="display:none">
@@ -34,70 +36,88 @@
 <button type="button" class="optionBtn" data-answer="Sushi">Sushi</button>
 <button type="button" class="optionBtn" data-answer="Burger">Burger</button>
 <button type="button" class="optionBtn" data-answer="Salade">Salade</button>
+<br>
+<button type="button" class="nextBtn btn" disabled>Suivant ➡️</button>
 </div>
 
 <div class="question" data-q="3" style="display:none">
-<p>3/10 : Quel est ton animal préféré ?</p>
-<button type="button" class="optionBtn" data-answer="Chien">Chien</button>
-<button type="button" class="optionBtn" data-answer="Chat">Chat</button>
-<button type="button" class="optionBtn" data-answer="Oiseau">Oiseau</button>
-<button type="button" class="optionBtn" data-answer="Poisson">Poisson</button>
+<p>3/10 : Quel est ton film préféré ?</p>
+<button type="button" class="optionBtn" data-answer="Titanic">Titanic</button>
+<button type="button" class="optionBtn" data-answer="Avengers">Avengers</button>
+<button type="button" class="optionBtn" data-answer="Inception">Inception</button>
+<button type="button" class="optionBtn" data-answer="La La Land">La La Land</button>
+<br>
+<button type="button" class="nextBtn btn" disabled>Suivant ➡️</button>
 </div>
 
 <div class="question" data-q="4" style="display:none">
-<p>4/10 : Quelle est ta saison préférée ?</p>
-<button type="button" class="optionBtn" data-answer="Été">Été</button>
-<button type="button" class="optionBtn" data-answer="Hiver">Hiver</button>
-<button type="button" class="optionBtn" data-answer="Printemps">Printemps</button>
-<button type="button" class="optionBtn" data-answer="Automne">Automne</button>
+<p>4/10 : Quel est ton animal préféré ?</p>
+<button type="button" class="optionBtn" data-answer="Chat">Chat</button>
+<button type="button" class="optionBtn" data-answer="Chien">Chien</button>
+<button type="button" class="optionBtn" data-answer="Oiseau">Oiseau</button>
+<button type="button" class="optionBtn" data-answer="Poisson">Poisson</button>
+<br>
+<button type="button" class="nextBtn btn" disabled>Suivant ➡️</button>
 </div>
 
 <div class="question" data-q="5" style="display:none">
-<p>5/10 : Quel est ton sport préféré ?</p>
-<button type="button" class="optionBtn" data-answer="Football">Football</button>
-<button type="button" class="optionBtn" data-answer="Basketball">Basketball</button>
-<button type="button" class="optionBtn" data-answer="Tennis">Tennis</button>
-<button type="button" class="optionBtn" data-answer="Natation">Natation</button>
+<p>5/10 : Quelle est ta saison préférée ?</p>
+<button type="button" class="optionBtn" data-answer="Printemps">Printemps</button>
+<button type="button" class="optionBtn" data-answer="Été">Été</button>
+<button type="button" class="optionBtn" data-answer="Automne">Automne</button>
+<button type="button" class="optionBtn" data-answer="Hiver">Hiver</button>
+<br>
+<button type="button" class="nextBtn btn" disabled>Suivant ➡️</button>
 </div>
 
 <div class="question" data-q="6" style="display:none">
-<p>6/10 : Quel est ton film préféré ?</p>
-<button type="button" class="optionBtn" data-answer="Action">Action</button>
-<button type="button" class="optionBtn" data-answer="Comédie">Comédie</button>
-<button type="button" class="optionBtn" data-answer="Romance">Romance</button>
-<button type="button" class="optionBtn" data-answer="Horreur">Horreur</button>
-</div>
-
-<div class="question" data-q="7" style="display:none">
-<p>7/10 : Quel est ton fruit préféré ?</p>
-<button type="button" class="optionBtn" data-answer="Pomme">Pomme</button>
-<button type="button" class="optionBtn" data-answer="Banane">Banane</button>
-<button type="button" class="optionBtn" data-answer="Orange">Orange</button>
-<button type="button" class="optionBtn" data-answer="Fraise">Fraise</button>
-</div>
-
-<div class="question" data-q="8" style="display:none">
-<p>8/10 : Quel est ton dessert préféré ?</p>
-<button type="button" class="optionBtn" data-answer="Glace">Glace</button>
-<button type="button" class="optionBtn" data-answer="Gâteau">Gâteau</button>
-<button type="button" class="optionBtn" data-answer="Chocolat">Chocolat</button>
-<button type="button" class="optionBtn" data-answer="Fruits">Fruits</button>
-</div>
-
-<div class="question" data-q="9" style="display:none">
-<p>9/10 : Quelle musique écoutes-tu ?</p>
-<button type="button" class="optionBtn" data-answer="Pop">Pop</button>
-<button type="button" class="optionBtn" data-answer="Rap">Rap</button>
-<button type="button" class="optionBtn" data-answer="Rock">Rock</button>
-<button type="button" class="optionBtn" data-answer="Classique">Classique</button>
-</div>
-
-<div class="question" data-q="10" style="display:none">
-<p>10/10 : Quelle est ta boisson préférée ?</p>
+<p>6/10 : Quelle est ta boisson préférée ?</p>
 <button type="button" class="optionBtn" data-answer="Eau">Eau</button>
 <button type="button" class="optionBtn" data-answer="Jus">Jus</button>
 <button type="button" class="optionBtn" data-answer="Soda">Soda</button>
 <button type="button" class="optionBtn" data-answer="Café">Café</button>
+<br>
+<button type="button" class="nextBtn btn" disabled>Suivant ➡️</button>
+</div>
+
+<div class="question" data-q="7" style="display:none">
+<p>7/10 : Quel est ton hobby préféré ?</p>
+<button type="button" class="optionBtn" data-answer="Sport">Sport</button>
+<button type="button" class="optionBtn" data-answer="Lecture">Lecture</button>
+<button type="button" class="optionBtn" data-answer="Jeux vidéo">Jeux vidéo</button>
+<button type="button" class="optionBtn" data-answer="Musique">Musique</button>
+<br>
+<button type="button" class="nextBtn btn" disabled>Suivant ➡️</button>
+</div>
+
+<div class="question" data-q="8" style="display:none">
+<p>8/10 : Quelle est ta destination de rêve ?</p>
+<button type="button" class="optionBtn" data-answer="Paris">Paris</button>
+<button type="button" class="optionBtn" data-answer="Tokyo">Tokyo</button>
+<button type="button" class="optionBtn" data-answer="New York">New York</button>
+<button type="button" class="optionBtn" data-answer="Hawaii">Hawaii</button>
+<br>
+<button type="button" class="nextBtn btn" disabled>Suivant ➡️</button>
+</div>
+
+<div class="question" data-q="9" style="display:none">
+<p>9/10 : Quel est ton sport préféré ?</p>
+<button type="button" class="optionBtn" data-answer="Football">Football</button>
+<button type="button" class="optionBtn" data-answer="Basketball">Basketball</button>
+<button type="button" class="optionBtn" data-answer="Tennis">Tennis</button>
+<button type="button" class="optionBtn" data-answer="Natation">Natation</button>
+<br>
+<button type="button" class="nextBtn btn" disabled>Suivant ➡️</button>
+</div>
+
+<div class="question" data-q="10" style="display:none">
+<p>10/10 : Quel est ton dessert préféré ?</p>
+<button type="button" class="optionBtn" data-answer="Glace">Glace</button>
+<button type="button" class="optionBtn" data-answer="Chocolat">Chocolat</button>
+<button type="button" class="optionBtn" data-answer="Tarte">Tarte</button>
+<button type="button" class="optionBtn" data-answer="Fruit">Fruit</button>
+<br>
+<button type="button" class="nextBtn btn" disabled>Terminer ✅</button>
 </div>
 
 </form>
