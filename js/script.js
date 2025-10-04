@@ -1,172 +1,177 @@
-/* ================= MUSIC ================= */
-const music = document.getElementById("music");
-const muteBtn = document.getElementById("muteBtn");
-if(music && muteBtn){
-    muteBtn.addEventListener("click",()=>{
-        music.muted = !music.muted;
-        muteBtn.textContent = music.muted ? "🔈 Activer le son" : "🔊 Couper le son";
-    });
-}
+// ==================== VARIABLES GLOBALES ====================
+let currentQuestion = 0;
+let score = 0;
+let hostName = "";
+let uid = "";
+let participants = JSON.parse(localStorage.getItem("participants") || "[]");
 
-/* ================= UID GENERATOR ================= */
-function generateUID(name){
-    return name + "-" + Math.floor(Math.random()*10000);
-}
+// ==================== START FORM INDEX.HTML ====================
+document.addEventListener("DOMContentLoaded", () => {
+    const startForm = document.getElementById("startForm");
+    const music = document.getElementById("music");
+    const muteBtn = document.getElementById("muteBtn");
 
-/* ================= INDEX.HTML ================= */
-const startForm = document.getElementById("startForm");
-if(startForm){
-    startForm.addEventListener("submit",(e)=>{
-        e.preventDefault();
-        const playerName = document.getElementById("playerName").value.trim();
-        if(!playerName) return alert("Entrez votre nom !");
-        localStorage.setItem("hostName", playerName);
-        const uid = generateUID(playerName);
-        localStorage.setItem("lastUID", uid);
-        window.location.href = "questions.html";
-    });
-}
-
-/* ================= QUESTIONS.HTML ================= */
-const quizForm = document.getElementById("quizForm");
-if(quizForm){
-    const questions = document.querySelectorAll(".question");
-    let currentQ = 0;
-    let score = 0;
-
-    function showQuestion(n){
-        questions.forEach(q => q.style.display="none");
-        if(n<questions.length) questions[n].style.display="block";
+    if (muteBtn && music) {
+        muteBtn.addEventListener("click", () => {
+            music.muted = !music.muted;
+            muteBtn.textContent = music.muted ? "🔈 Activer le son" : "🔊 Couper le son";
+        });
     }
-    showQuestion(currentQ);
 
-    questions.forEach(q=>{
-        const options = q.querySelectorAll(".optionBtn");
-        const nextBtn = q.querySelector(".nextBtn");
-        options.forEach(opt=>{
-            opt.addEventListener("click",()=>{
-                if(opt.dataset.answer === options[0].dataset.answer) score++;
-                options.forEach(b=>b.classList.remove("selected"));
-                opt.classList.add("selected");
-                nextBtn.disabled = false;
+    if (startForm) {
+        startForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const input = document.getElementById("playerName");
+            if (!input.value) return alert("Veuillez entrer votre nom !");
+            hostName = input.value.trim();
+            localStorage.setItem("hostName", hostName);
+            localStorage.setItem("hostScore", 0);
+            // Generer UID
+            uid = "ID" + Math.floor(Math.random() * 1000000);
+            localStorage.setItem("uid", uid);
+            window.location.href = "questions.html?uid=" + uid;
+        });
+    }
+
+    // ==================== QUESTIONS.HTML ====================
+    const questionsForm = document.getElementById("quizForm");
+    if (questionsForm) {
+        const questionDivs = Array.from(document.querySelectorAll(".question"));
+        showQuestion(currentQuestion);
+
+        questionDivs.forEach(qDiv => {
+            const options = Array.from(qDiv.querySelectorAll(".optionBtn"));
+            const nextBtn = qDiv.querySelector(".nextBtn");
+
+            options.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    // Marquer bouton choisi
+                    options.forEach(b => b.classList.remove("selected"));
+                    opt.classList.add("selected");
+                    nextBtn.disabled = false;
+                });
+            });
+
+            nextBtn.addEventListener("click", () => {
+                const selected = qDiv.querySelector(".optionBtn.selected");
+                if (selected) {
+                    // Sove score selon mo kle (exemple: toujou 1 pt)
+                    score++;
+                    currentQuestion++;
+                    localStorage.setItem("hostScore", score);
+                    if (currentQuestion < questionDivs.length) {
+                        showQuestion(currentQuestion);
+                    } else {
+                        // Fin des questions -> Resultat
+                        window.location.href = "resultat_score.html?uid=" + uid;
+                    }
+                }
             });
         });
 
-        nextBtn.addEventListener("click",()=>{
-            currentQ++;
-            updateProgress(currentQ, questions.length);
-            if(currentQ>=questions.length){
-                const uid = localStorage.getItem("lastUID");
-                localStorage.setItem(uid + "-" + Date.now(), score);
-                localStorage.setItem("lastScore", score);
-                window.location.href = "resultat.html";
-            } else showQuestion(currentQ);
-        });
-    });
-
-    function updateProgress(current,total){
-        const bar = document.getElementById("progressBar");
-        if(bar) bar.style.width = ((current/total)*100) + "%";
-    }
-}
-
-/* ================= RESULTAT.HTML ================= */
-if(document.getElementById("hostName")){
-    const hostName = localStorage.getItem("hostName");
-    const score = localStorage.getItem("lastScore");
-    const uid = localStorage.getItem("lastUID");
-
-    document.getElementById("hostName").textContent = hostName;
-    document.getElementById("scoreDisplay").textContent = score + "/10";
-    const uidLink = document.getElementById("uidLink");
-    uidLink.value = window.location.origin + "/jouer.html?uid=" + uid;
-
-    const shareURL = encodeURIComponent(window.location.origin + "/jouer.html?uid=" + uid);
-    if(document.getElementById("shareWA")) document.getElementById("shareWA").href="https://wa.me/?text=Viens%20jouer%20au%20Crush%20Challenge%20👉%20"+shareURL;
-    if(document.getElementById("shareFB")) document.getElementById("shareFB").href="https://www.facebook.com/sharer/sharer.php?u="+shareURL;
-    if(document.getElementById("shareIG")) document.getElementById("shareIG").href="https://www.instagram.com/?url="+shareURL;
-    if(document.getElementById("shareTT")) document.getElementById("shareTT").href="https://www.tiktok.com/share?url="+shareURL;
-
-    startConfetti();
-}
-
-/* ================= SCORE.HTML ================= */
-if(document.getElementById("scoreTable")){
-    const uid = localStorage.getItem("lastUID");
-    const scoreTable = document.getElementById("scoreTable");
-    if(uid && scoreTable){
-        const scores = [];
-        for(let i=0;i<localStorage.length;i++){
-            const key = localStorage.key(i);
-            if(key.includes(uid) && !key.includes("last")) {
-                scores.push({name:key.split("-")[0], score:parseInt(localStorage.getItem(key))});
+        function showQuestion(index) {
+            questionDivs.forEach((q, i) => q.style.display = i === index ? "block" : "none");
+            // Update progress bar
+            const progressBar = document.getElementById("progressBar");
+            if (progressBar) {
+                progressBar.style.width = ((index + 1) / questionDivs.length) * 100 + "%";
             }
         }
-        scores.sort((a,b)=>b.score-a.score);
-        scores.forEach(s=>{
-            const tr = document.createElement("tr");
-            tr.innerHTML = `<td>${s.name}</td><td>${s.score}/10</td>`;
-            scoreTable.appendChild(tr);
-        });
-
-        const shareURL = encodeURIComponent(window.location.origin + "/jouer.html?uid="+uid);
-        if(document.getElementById("shareWA")) document.getElementById("shareWA").href="https://wa.me/?text=Viens%20jouer%20au%20Crush%20Challenge%20👉%20"+shareURL;
-        if(document.getElementById("shareFB")) document.getElementById("shareFB").href="https://www.facebook.com/sharer/sharer.php?u="+shareURL;
-        if(document.getElementById("shareIG")) document.getElementById("shareIG").href="https://www.instagram.com/?url="+shareURL;
-        if(document.getElementById("shareTT")) document.getElementById("shareTT").href="https://www.tiktok.com/share?url="+shareURL;
     }
-}
 
-/* ================= FONCTIONS UTILES ================= */
-function rejouer(){ window.location.href = "index.html"; }
+    // ==================== RESULTAT_SCORE.HTML ====================
+    const hostNameSpan = document.getElementById("hostName");
+    const scoreDisplay = document.getElementById("scoreDisplay");
+    const uidInput = document.getElementById("uidLink");
 
-function creerDefi(){
-    const hostName = prompt("Entrez votre nom pour créer votre défi :");
-    if(hostName){
-        localStorage.setItem("hostName", hostName);
-        const uid = hostName + "-" + Math.floor(Math.random()*10000);
-        localStorage.setItem("lastUID", uid);
-        window.location.href = "questions.html";
+    if (hostNameSpan && scoreDisplay && uidInput) {
+        const hostNameStored = localStorage.getItem("hostName") || "Hôte";
+        const hostScoreStored = localStorage.getItem("hostScore") || 0;
+        hostNameSpan.textContent = hostNameStored;
+        scoreDisplay.textContent = hostScoreStored;
+
+        // UID et lien
+        let uidStored = localStorage.getItem("uid");
+        if (!uidStored) {
+            uidStored = "ID" + Math.floor(Math.random() * 1000000);
+            localStorage.setItem("uid", uidStored);
+        }
+        const link = window.location.origin + "/questions.html?uid=" + uidStored;
+        uidInput.value = link;
+
+        // Share links
+        const shareWA = document.getElementById("shareWA");
+        const shareFB = document.getElementById("shareFB");
+        const shareIG = document.getElementById("shareIG");
+        const shareTT = document.getElementById("shareTT");
+        if (shareWA) shareWA.href = "https://wa.me/?text=" + encodeURIComponent(link);
+        if (shareFB) shareFB.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(link);
+        if (shareIG) shareIG.href = "#"; // IG pas de partage direct
+        if (shareTT) shareTT.href = "#"; // TikTok pas de partage direct
     }
-}
 
-/* ================= CONFETTI ================= */
-function startConfetti(){
+    // ==================== CONFETTI ====================
     const canvas = document.getElementById("confetti");
-    if(!canvas) return;
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-    const confetti = [];
-    for(let i=0;i<150;i++){
-        confetti.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height - canvas.height, r:Math.random()*6+4, d:Math.random()*150, color:"hsl("+Math.random()*360+",100%,50%)", tilt:Math.random()*10-10});
-    }
-    function draw(){ 
-        ctx.clearRect(0,0,canvas.width,canvas.height); 
-        confetti.forEach(c=>{
-            ctx.beginPath();
-            ctx.lineWidth=c.r;
-            ctx.strokeStyle=c.color;
-            ctx.moveTo(c.x+c.tilt+c.r/2,c.y);
-            ctx.lineTo(c.x+c.tilt,c.y+c.tilt+c.r/2);
-            ctx.stroke();
-            update(c);
-        });
-    }
-    function update(c){ 
-        confetti.forEach(c=>{
-            c.y+=Math.cos(c.d)+1+c.r/2;
-            c.x+=Math.sin(c.d);
-            if(c.y>canvas.height) c.y=-10;
-        });
-    }
-    setInterval(draw,20);
-}
+    if (canvas) launchConfetti(canvas);
 
-/* ================= COPIER LINK ================= */
-function copyLink(){
-    const link = document.getElementById("uidLink");
-    link.select();
-    link.setSelectionRange(0,99999);
+});
+
+// ==================== COPIER LINK ====================
+function copyLink() {
+    const uidInput = document.getElementById("uidLink");
+    uidInput.select();
+    uidInput.setSelectionRange(0, 99999);
     document.execCommand("copy");
     alert("Lien copié !");
+}
+
+// ==================== REJOUER ====================
+function rejouer() {
+    window.location.href = "index.html";
+}
+
+// ==================== CREER DEFI ====================
+function creerDefi() {
+    alert("Vous pouvez maintenant créer votre propre défi !");
+}
+
+// ==================== CONFETTI SIMPLE ====================
+function launchConfetti(canvas) {
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const particles = [];
+    for (let i = 0; i < 150; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height - 100,
+            r: Math.random() * 6 + 2,
+            d: Math.random() * 50 + 1,
+            color: "hsl(" + Math.random() * 360 + ",100%,50%)",
+            tilt: Math.random() * 10 - 10
+        });
+    }
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+            ctx.beginPath();
+            ctx.lineWidth = p.r;
+            ctx.strokeStyle = p.color;
+            ctx.moveTo(p.x + p.tilt + p.r / 2, p.y);
+            ctx.lineTo(p.x + p.tilt, p.y + p.d);
+            ctx.stroke();
+        });
+        update();
+        requestAnimationFrame(draw);
+    }
+    function update() {
+        particles.forEach(p => {
+            p.y += 2;
+            if (p.y > canvas.height) {
+                p.y = -10;
+                p.x = Math.random() * canvas.width;
+            }
+        });
+    }
+    draw();
 }
