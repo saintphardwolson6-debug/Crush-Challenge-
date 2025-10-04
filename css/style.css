@@ -1,59 +1,116 @@
-.optionBtn{
-    padding:10px 20px;
-    margin:5px;
-    cursor:pointer;
-    border:none;
-    border-radius:5px;
-    background:#3498db;
-    color:#fff;
-    font-weight:bold;
-    transition:0.3s;
-}
-.optionBtn:hover{
-    background:#2980b9;
-}
-.optionBtn.selected{
-    background:#2ecc71;
+/* --- Reset & font --- */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto Condensed', sans-serif;
+  background: url('../assets/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
 }
 
-.nextBtn{
-    padding:10px 25px;
-    margin-top:15px;
-    font-size:16px;
-    cursor:pointer;
-    background:#e67e22;
-    color:#fff;
-    border:none;
-    border-radius:5px;
-    display:inline-block; /* garantit bouton vizib */
-}
-.nextBtn:disabled{
-    background:#95a5a6;
-    cursor:not-allowed;
+header {
+  text-align: center;
+  padding: 20px;
 }
 
-.pulse{
-    animation: pulse 2s infinite;
+.logo {
+  width: 150px;
 }
 
-@keyframes pulse{
-    0%{transform:scale(1);}
-    50%{transform:scale(1.05);}
-    100%{transform:scale(1);}
+.pulse {
+  animation: pulse 2s infinite;
 }
 
-/* Progress bar */
-.progress-container{
-    width:90%;
-    background:#ccc;
-    height:15px;
-    border-radius:10px;
-    margin:10px auto;
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
-.progress-bar{
-    height:100%;
-    width:0%;
-    background:#2ecc71;
-    border-radius:10px;
-    transition:0.3s;
+
+/* --- Form & Buttons --- */
+form { text-align: center; margin-top: 20px; }
+input[type="text"] {
+  padding: 10px;
+  width: 200px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: none;
 }
+.btn {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #ff4081;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+.btn:hover { background-color: #e91e63; }
+
+/* --- Question Options --- */
+.options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 20px 0;
+}
+.optionBtn {
+  padding: 10px 20px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+.optionBtn:hover { background: rgba(255,255,255,0.2); }
+.optionBtn.selected { background: #ff4081; border-color:#ff4081; }
+
+/* --- Progress bar --- */
+.progress-container {
+  width: 80%;
+  margin: 10px auto;
+  background-color: rgba(255,255,255,0.2);
+  border-radius: 5px;
+  height: 15px;
+}
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background-color: #ff4081;
+  border-radius: 5px;
+  transition: width 0.3s;
+}
+
+/* --- Share Section --- */
+.share-section {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.share-section a {
+  text-decoration: none;
+  color: #fff;
+  padding: 5px 10px;
+  background: #2196f3;
+  border-radius: 5px;
+}
+.share-section a:hover { background: #1976d2; }
+
+/* --- Score Table --- */
+table {
+  width: 80%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  text-align: center;
+  background: rgba(0,0,0,0.3);
+}
+th, td {
+  padding: 10px;
+  border: 1px solid #fff;
+}
+
+/* --- Confetti Canvas --- */
+canvas { position: fixed; top:0; left:0; pointer-events:none; z-index:1000; }
