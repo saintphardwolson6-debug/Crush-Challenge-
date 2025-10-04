@@ -3,42 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Amusant et Modène - Accueil</title>
+    <title>Résultats du Quiz</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div id="accueil-container" class="page active">
-        <header>
-            <img src="assets/logo.png" alt="Logo du Jeu" class="logo">
-            <h1>Quiz Amusant et Modène</h1>
-        </header>
-        <main class="card">
-            <h2>Bienvenue !</h2>
-            <p>Testez vos connaissances et découvrez votre personnalité en répondant à 10 questions.</p>
-            <form id="nom-form">
-                <label for="nom-joueur">Entrez votre nom:</label>
-                <input type="text" id="nom-joueur" placeholder="Votre Nom" required>
-                <button type="submit" id="btn-commencer" class="bouton-principal">KÒMANSE</button>
-            </form>
+    <div id="resultat-container" class="page active">
+        <div class="confetti-effect"></div> <main class="card resultat-card">
+            <h2 id="message-felicitation">Félicitations, [Nom du joueur]!</h2>
+            <p class="score-final">Votre score est de: <span id="score-display">X/10</span></p>
+
+            <div class="zone-partage">
+                <h3>Partagez votre résultat !</h3>
+                <p id="lien-partage-penalise"></p> <div class="boutons-partage-social">
+                    <button class="btn-social whatsapp" data-platform="whatsapp">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </button>
+                    <button class="btn-social instagram" data-platform="instagram">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </button>
+                    <button class="btn-social tiktok" data-platform="tiktok">
+                        <i class="fab fa-tiktok"></i> TikTok
+                    </button>
+                    <button class="btn-social facebook" data-platform="facebook">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </button>
+                </div>
+            </div>
+
+            <a href="classement.html" class="bouton-secondaire">Voir le Classement</a>
+            <a href="index.html" class="bouton-principal">Rejouer</a>
         </main>
     </div>
 
-    <div id="quiz-container" class="page">
-        <div class="header-quiz">
-            <span id="progression">0/10</span>
-            <h2 id="question-text"></h2>
-        </div>
-        
-        <div id="options-container" class="options-grid">
-            </div>
-
-        <button id="btn-question-suivante" class="bouton-principal" style="display:none;">Question Suivante</button>
-    </div>
-
-    <audio id="son-clic" src="assets/click.mp3" preload="auto"></audio>
-    <audio id="son-victoire" src="assets/victory.mp3" preload="auto"></audio>
-
-    <script src="script.js"></script>
+    <script src="script.js"></script> 
+    <script src="https://kit.fontawesome.com/votre_kit_fontawesome.js" crossorigin="anonymous"></script> 
 </body>
 </html>
