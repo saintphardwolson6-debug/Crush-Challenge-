@@ -1,42 +1,34 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Résultats du Quiz</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crush Challenge</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/script.js" defer></script>
 </head>
 <body>
+<header>
+<img src="assets/logo.png" class="logo pulse" alt="Logo Crush Challenge">
+<h1>Bienvenue sur <span>Crush Challenge ❤️</span></h1>
+</header>
 
-    <div id="resultat-container" class="page active">
-        <div class="confetti-effect"></div> <main class="card resultat-card">
-            <h2 id="message-felicitation">Félicitations, [Nom du joueur]!</h2>
-            <p class="score-final">Votre score est de: <span id="score-display">X/10</span></p>
+<main>
+<p>Teste combien tes amis ou ton crush te connaissent !</p>
+<a href="questions.html" class="btn pulse">🎯 Créer mon défi</a>
+<a href="jouer.html" class="btn pulse">▶️ Jouer un défi</a>
+</main>
 
-            <div class="zone-partage">
-                <h3>Partagez votre résultat !</h3>
-                <p id="lien-partage-penalise"></p> <div class="boutons-partage-social">
-                    <button class="btn-social whatsapp" data-platform="whatsapp">
-                        <i class="fab fa-whatsapp"></i> WhatsApp
-                    </button>
-                    <button class="btn-social instagram" data-platform="instagram">
-                        <i class="fab fa-instagram"></i> Instagram
-                    </button>
-                    <button class="btn-social tiktok" data-platform="tiktok">
-                        <i class="fab fa-tiktok"></i> TikTok
-                    </button>
-                    <button class="btn-social facebook" data-platform="facebook">
-                        <i class="fab fa-facebook-f"></i> Facebook
-                    </button>
-                </div>
-            </div>
+<footer>
+<p>Partager :</p>
+<div class="social-share">
+  <a href="#" id="shareWA" target="_blank">WhatsApp</a>
+  <a href="#" id="shareFB" target="_blank">Facebook</a>
+  <a href="#" id="shareTW" target="_blank">Twitter</a>
+</div>
+</footer>
 
-            <a href="classement.html" class="bouton-secondaire">Voir le Classement</a>
-            <a href="index.html" class="bouton-principal">Rejouer</a>
-        </main>
-    </div>
-
-    <script src="script.js"></script> 
-    <script src="https://kit.fontawesome.com/votre_kit_fontawesome.js" crossorigin="anonymous"></script> 
+<audio id="music" src="assets/music.mp3" autoplay loop></audio>
+<button id="muteBtn">🔊 Couper le son</button>
 </body>
 </html>
