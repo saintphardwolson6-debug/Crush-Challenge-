@@ -3,34 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Résultat - Crush Challenge</title>
+<title>Résultats & Classement - Crush Challenge</title>
 <link rel="stylesheet" href="css/style.css">
-<script src="js/resultat.js" defer></script>
+<script src="js/questions.js" defer></script>
 </head>
 <body>
+<canvas id="confetti"></canvas>
+
 <header>
 <img src="assets/logo.png" class="logo pulse" alt="Logo Crush Challenge">
-<h1>Félicitations, <span id="hostName"></span> ! 🎉</h1>
-<p>Ton score : <span id="scoreDisplay">0/10</span></p>
+<h1>Félicitations <span id="hostName"></span> !</h1>
 </header>
 
 <main>
-<div class="share-section">
-<label>Ton lien unique :</label>
+<section id="hostResult">
+<p>Vous avez obtenu : <span id="scoreDisplay"></span> points</p>
+
+<label for="uidLink">Lien de partage :</label>
 <input type="text" id="uidLink" readonly>
-<button onclick="copyLink()" class="btn">Copier le lien</button>
+<button class="btn" onclick="copyLink()">Copier le lien</button>
 
-<p>Partager sur les réseaux :</p>
-<a href="#" id="shareWA" target="_blank">WhatsApp</a>
-<a href="#" id="shareFB" target="_blank">Facebook</a>
-<a href="#" id="shareIG" target="_blank">Instagram</a>
-<a href="#" id="shareTT" target="_blank">TikTok</a>
+<div class="share-section">
+<a href="#" target="_blank" id="shareWA">WhatsApp</a>
+<a href="#" target="_blank" id="shareFB">Facebook</a>
+<a href="#" target="_blank" id="shareIG">Instagram</a>
+<a href="#" target="_blank" id="shareTT">TikTok</a>
 </div>
+</section>
 
-<button onclick="rejouer()" class="btn pulse">Rejouer 🔄</button>
+<hr style="margin:30px 0; border:1px solid #fff; width:80%;">
 
-<canvas id="confetti"></canvas>
-<audio id="victorySound" src="assets/victory.mp3" autoplay></audio>
+<section id="scoreTableSection">
+<h2>Classement des participants</h2>
+<table id="scoreTable">
+<tr><th>Nom</th><th>Score</th></tr>
+<!-- Les scores seront remplis par JS -->
+</table>
+</section>
+
+<br>
+<button class="btn" onclick="rejouer()">Rejouer</button>
+<button class="btn" onclick="creerDefi()">Créer votre propre défi</button>
+
+<audio id="music" src="assets/music.mp3" autoplay loop></audio>
+<button id="muteBtn">🔊 Couper le son</button>
 </main>
 </body>
 </html>
