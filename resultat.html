@@ -10,29 +10,31 @@
 <body>
 <header>
 <img src="assets/logo.png" class="logo pulse" alt="Logo">
-<h1>🎉 Résultat</h1>
+<h1>Félicitations 🎉</h1>
+<p id="hostNameDisplay">Nom du joueur : ...</p>
 </header>
 
 <main>
 <p>Ton score : <span id="scoreFinal">0</span>/10</p>
 
-<p>Lien UID :</p>
+<p>Lien pour partager ton défi :</p>
 <input type="text" id="uidLink" readonly>
 <button onclick="copyLink()">📋 Copier</button>
 
-<h3>Partager ton défi :</h3>
+<h3>Partager sur :</h3>
 <div class="social-share">
-  <a href="#" id="shareWA" target="_blank">WhatsApp</a>
-  <a href="#" id="shareFB" target="_blank">Facebook</a>
-  <a href="#" id="shareTW" target="_blank">Twitter</a>
+<a href="#" id="shareWA" target="_blank">WhatsApp</a>
+<a href="#" id="shareFB" target="_blank">Facebook</a>
+<a href="#" id="shareIG" target="_blank">Instagram</a>
+<a href="#" id="shareTT" target="_blank">TikTok</a>
 </div>
 
 <h2>Classement des joueurs</h2>
 <table id="scoreTable">
-  <tr><th>Joueur</th><th>Score</th></tr>
+<tr><th>Joueur</th><th>Score</th></tr>
 </table>
 
-<a href="./replay.html" class="btn pulse">Rejouer</a>
+<a href="index.html" class="btn pulse">Rejouer / Créer nouveau défi</a>
 </main>
 </body>
 </html>
