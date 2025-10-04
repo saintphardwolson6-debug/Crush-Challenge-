@@ -1,24 +1,66 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Résultat</title>
-    <link rel="stylesheet" href="style/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Crush-Challenge — Résultat</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
-    <div class="container resultat">
-        <h1>Félicitations <span id="playerName"></span> ! 🎉</h1>
-        <p>Vous avez obtenu <span id="score"></span>/10 points</p>
-        <button id="shareBtn">Pataje</button>
-        <button onclick="window.location.href='classement.html'">Voir le classement</button>
+<body class="page-resultat">
+  <header class="topbar small">
+    <img src="assets/images/logo.png" alt="logo" class="logo" />
+    <h1>Résultat</h1>
+  </header>
+
+  <main class="card resultat-card">
+    <div class="result-header">
+      <h2>Félicitations <span id="playerNameSpan"></span> !</h2>
+      <p id="scoreText">Vous avez obtenu <strong id="scoreVal"></strong>/10</p>
     </div>
 
-    <audio id="winSound" src="assets/sounds/victoire.mp3" autoplay></audio>
+    <div class="result-actions">
+      <button id="shareWhatsapp" class="btn share">Partager sur WhatsApp</button>
+      <button id="shareTikTok" class="btn share">Partager sur TikTok</button>
+      <button id="shareIG" class="btn share">Partager sur Instagram</button>
+      <button id="saveLeaderboard" class="btn primary">Enregistrer au classement</button>
+    </div>
 
-    <script src="js/share.js"></script>
-    <script>
-        document.getElementById('playerName').textContent = localStorage.getItem('playerName');
-        document.getElementById('score').textContent = localStorage.getItem('score');
-    </script>
+    <div class="final-note">
+      <button id="replayBtn" class="btn ghost">Rejouer</button>
+      <a href="classement.html" class="btn">Voir le classement</a>
+    </div>
+  </main>
+
+  <audio id="victorySound" src="assets/sounds/victory.mp3"></audio>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script src="js/share.js" defer></script>
+  <script src="js/leaderboard.js" defer></script>
+
+  <script>
+    // affichage initial
+    const name = localStorage.getItem('playerName') || 'Joueur';
+    const score = parseInt(localStorage.getItem('score') || '0', 10);
+    document.getElementById('playerNameSpan').textContent = name;
+    document.getElementById('scoreVal').textContent = score;
+
+    // confetti & son si bon score
+    const victory = document.getElementById('victorySound');
+    if (score >= 6) {
+      victory.play().catch(()=>{});
+      // confetti burst
+      confetti({
+        particleCount: 120,
+        spread: 70,
+        origin: { y: 0.3 }
+      });
+    }
+
+    document.getElementById('replayBtn').addEventListener('click', () => {
+      // reset answers and score
+      localStorage.removeItem('answers');
+      localStorage.removeItem('score');
+      window.location.href = 'replay.html';
+    });
+  </script>
 </body>
 </html>
