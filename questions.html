@@ -2,30 +2,18 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz - Les Questions</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="assets/logo.png" type="image/png">
+    <title>Questions</title>
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
-
-    <div id="quiz-container" class="page active">
-        <div class="card quiz-card">
-            <div class="header-quiz">
-                <span id="progression">1/10</span>
-            </div>
-            <h2 id="question-text"></h2>
-        
-            <div id="options-container" class="options-grid">
-                </div>
-
-            <button id="btn-question-suivante" class="bouton-principal" style="display:none;">Question Suivante</button>
-        </div>
+    <div class="container questions">
+        <div id="progress">Question 1/10</div>
+        <h2 id="question"></h2>
+        <div id="choices"></div>
     </div>
 
-    <audio id="son-clic" src="assets/click.mp3" preload="auto"></audio>
-    <audio id="son-victoire" src="assets/victory.mp3" preload="auto"></audio>
+    <audio id="clickSound" src="assets/sounds/clic.mp3"></audio>
 
-    <script src="js/script.js"></script>
+    <script src="js/questions.js"></script>
 </body>
 </html>
