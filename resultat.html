@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Résultat</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <div class="container resultat">
+        <h1>Félicitations <span id="playerName"></span> ! 🎉</h1>
+        <p>Vous avez obtenu <span id="score"></span>/10 points</p>
+        <button id="shareBtn">Pataje</button>
+        <button onclick="window.location.href='classement.html'">Voir le classement</button>
+    </div>
+
+    <audio id="winSound" src="assets/sounds/victoire.mp3" autoplay></audio>
+
+    <script src="js/share.js"></script>
+    <script>
+        document.getElementById('playerName').textContent = localStorage.getItem('playerName');
+        document.getElementById('score').textContent = localStorage.getItem('score');
+    </script>
+</body>
+</html>
