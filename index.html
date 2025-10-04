@@ -1,29 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Le Jeu Pro</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container intro">
-    <h1 class="game-title">🎯 Le Jeu Pro</h1>
-    <p>Entrez votre nom pour commencer</p>
+    <img src="assets/logo.png" class="logo" alt="Logo Le Jeu Pro">
+    <h1>🎯 Le Jeu Pro</h1>
+    <p>Entrez votre nom pour commencer :</p>
     <input type="text" id="playerName" placeholder="Votre nom..." />
     <button id="startBtn">Commencer</button>
   </div>
 
-  <script>
-    document.getElementById("startBtn").addEventListener("click", () => {
-      const name = document.getElementById("playerName").value.trim();
-      if (!name) {
-        alert("Veuillez entrer votre nom !");
-        return;
-      }
-      localStorage.setItem("playerName", name);
-      window.location.href = "questions.html";
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
