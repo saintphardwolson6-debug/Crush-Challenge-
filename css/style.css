@@ -1,17 +1,141 @@
-body{font-family:'Roboto Condensed',sans-serif;margin:0;padding:0;text-align:center;background:#111 url('../assets/background.jpg') no-repeat center center fixed;background-size:cover;color:#fff;}
-header{padding:20px;background:rgba(0,0,0,0.5);}
-.logo{width:120px;}
-h1 span{color:hotpink;}
-.btn{padding:12px 25px;margin:10px;background:#ff4757;color:#fff;border-radius:8px;text-decoration:none;display:inline-block;cursor:pointer;}
-.btn:hover{background:#e84118;}
-@keyframes pulse{0%{transform:scale(1);}50%{transform:scale(1.05);}100%{transform:scale(1);}}
-.pulse{animation:pulse 2s infinite;}
-.social-share a{margin:5px;font-size:24px;color:white;text-decoration:none;}
-.progress-container{width:80%;height:20px;background:rgba(255,255,255,0.2);margin:20px auto;border-radius:10px;}
-.progress-bar{height:100%;width:0%;background:hotpink;border-radius:10px;transition:width 0.3s;}
-.optionBtn{padding:10px 20px;margin:8px;border-radius:8px;border:none;font-size:16px;cursor:pointer;background:#ff6b81;color:#fff;transition:transform 0.2s,background 0.2s;}
-.optionBtn:hover{transform:scale(1.1);background:#ff4757;}
-.optionBtn.correct{background:#2ed573 !important;animation:correctAnim 0.5s;}
-.optionBtn.wrong{background:#ff3f34 !important;animation:wrongAnim 0.5s;}
-@keyframes correctAnim{0%{transform:scale(1);}50%{transform:scale(1.2);}100%{transform:scale(1);}}
-@keyframes wrongAnim{0%{transform:scale(1);}50%{transform:scale(0.9);}100%{transform:scale(1);}}
+/* ===== BODY & BACKGROUND ===== */
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background: #111 url('../assets/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+}
+
+/* ===== HEADER ===== */
+header {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+  width: 120px;
+}
+
+h1 span {
+  color: hotpink;
+}
+
+/* ===== BUTTON ===== */
+.btn {
+  padding: 12px 25px;
+  margin: 10px;
+  background: #ff4757;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background: #e84118;
+  transform: scale(1.05);
+}
+
+/* ===== PULSE ANIMATION ===== */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* ===== SOCIAL SHARE ===== */
+.social-share a {
+  margin: 5px;
+  font-size: 24px;
+  color: white;
+  text-decoration: none;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.social-share a:hover {
+  transform: scale(1.2);
+  color: hotpink;
+}
+
+/* ===== PROGRESS BAR ===== */
+.progress-container {
+  width: 80%;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: hotpink;
+  border-radius: 10px;
+  transition: width 0.3s;
+}
+
+/* ===== QUESTION BUTTONS ===== */
+.optionBtn {
+  padding: 10px 20px;
+  margin: 8px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  background: #ff6b81;
+  color: #fff;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.optionBtn:hover {
+  transform: scale(1.1);
+  background: #ff4757;
+}
+
+.optionBtn.correct {
+  background: #2ed573 !important;
+  animation: correctAnim 0.5s;
+}
+
+.optionBtn.wrong {
+  background: #ff3f34 !important;
+  animation: wrongAnim 0.5s;
+}
+
+@keyframes correctAnim {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes wrongAnim {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+/* ===== TABLE ===== */
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #fff;
+}
+
+th {
+  background: hotpink;
+  color: #fff;
+}
