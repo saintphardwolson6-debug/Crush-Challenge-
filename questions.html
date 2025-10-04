@@ -1,19 +1,34 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Questions</title>
-    <link rel="stylesheet" href="style/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Crush-Challenge — Questions</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
-    <div class="container questions">
-        <div id="progress">Question 1/10</div>
-        <h2 id="question"></h2>
-        <div id="choices"></div>
+<body class="page-questions">
+  <header class="topbar small">
+    <img src="assets/images/logo.png" alt="logo" class="logo" />
+    <div class="progress" id="progress">1/10</div>
+  </header>
+
+  <main class="card question-card">
+    <h2 id="questionText">Question ici</h2>
+    <div id="choices" class="choices"></div>
+
+    <div class="controls bottom">
+      <button id="skipBtn" class="btn ghost">Passer</button>
     </div>
+  </main>
 
-    <audio id="clickSound" src="assets/sounds/clic.mp3"></audio>
+  <!-- sons -->
+  <audio id="clickSound" src="assets/sounds/click.mp3"></audio>
+  <audio id="correctSound" src="assets/sounds/correct.mp3"></audio>
 
-    <script src="js/questions.js"></script>
+  <!-- confetti lib -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+  <script src="js/questions.js" defer></script>
+  <script src="js/script.js" defer></script>
 </body>
 </html>
