@@ -17,7 +17,7 @@
 <p>Ton score : <span id="scoreFinal">0</span>/10</p>
 
 <p>Lien UID :</p>
-<input type="text" id="uidLink" readonly value="https://tonlien.github.io/Crush-Challenge/?uid=ABC123">
+<input type="text" id="uidLink" readonly>
 <button onclick="copyLink()">📋 Copier</button>
 
 <h3>Partager ton défi :</h3>
@@ -26,6 +26,11 @@
   <a href="#" id="shareFB" target="_blank">Facebook</a>
   <a href="#" id="shareTW" target="_blank">Twitter</a>
 </div>
+
+<h2>Classement des joueurs</h2>
+<table id="scoreTable">
+  <tr><th>Joueur</th><th>Score</th></tr>
+</table>
 
 <a href="./replay.html" class="btn pulse">Rejouer</a>
 </main>
