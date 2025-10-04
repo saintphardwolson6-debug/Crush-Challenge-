@@ -1,20 +1,44 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Le Jeu Pro</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Amusant et Modène - Accueil</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container intro">
-    <img src="assets/logo.png" class="logo" alt="Logo Le Jeu Pro">
-    <h1>🎯 Le Jeu Pro</h1>
-    <p>Entrez votre nom pour commencer :</p>
-    <input type="text" id="playerName" placeholder="Votre nom..." />
-    <button id="startBtn">Commencer</button>
-  </div>
 
-  <script src="script.js"></script>
+    <div id="accueil-container" class="page active">
+        <header>
+            <img src="assets/logo.png" alt="Logo du Jeu" class="logo">
+            <h1>Quiz Amusant et Modène</h1>
+        </header>
+        <main class="card">
+            <h2>Bienvenue !</h2>
+            <p>Testez vos connaissances et découvrez votre personnalité en répondant à 10 questions.</p>
+            <form id="nom-form">
+                <label for="nom-joueur">Entrez votre nom:</label>
+                <input type="text" id="nom-joueur" placeholder="Votre Nom" required>
+                <button type="submit" id="btn-commencer" class="bouton-principal">KÒMANSE</button>
+            </form>
+        </main>
+    </div>
+
+    <div id="quiz-container" class="page">
+        <div class="header-quiz">
+            <span id="progression">0/10</span>
+            <h2 id="question-text"></h2>
+        </div>
+        
+        <div id="options-container" class="options-grid">
+            </div>
+
+        <button id="btn-question-suivante" class="bouton-principal" style="display:none;">Question Suivante</button>
+    </div>
+
+    <audio id="son-clic" src="assets/click.mp3" preload="auto"></audio>
+    <audio id="son-victoire" src="assets/victory.mp3" preload="auto"></audio>
+
+    <script src="script.js"></script>
 </body>
 </html>
