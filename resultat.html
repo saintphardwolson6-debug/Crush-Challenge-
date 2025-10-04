@@ -1,52 +1,40 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Résultats & Classement - Crush Challenge</title>
-<link rel="stylesheet" href="css/style.css">
-<script src="js/questions.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Résultats - Le Jeu Pro</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<canvas id="confetti"></canvas>
+  <div class="container result">
+    <h1>🎉 Félicitations <span id="player"></span> !</h1>
+    <p>Vous avez obtenu <span id="score"></span> points.</p>
+    <p>Partagez votre défi :</p>
 
-<header>
-<img src="assets/logo.png" class="logo pulse" alt="Logo Crush Challenge">
-<h1>Félicitations <span id="hostName"></span> !</h1>
-</header>
+    <div class="share-buttons">
+      <a id="whatsapp" target="_blank">WhatsApp</a>
+      <a id="facebook" target="_blank">Facebook</a>
+      <a id="instagram" target="_blank">Instagram</a>
+    </div>
 
-<main>
-<section id="hostResult">
-<p>Vous avez obtenu : <span id="scoreDisplay"></span> points</p>
+    <button onclick="window.location.href='index.html'">Créer mon propre défi</button>
+  </div>
 
-<label for="uidLink">Lien de partage :</label>
-<input type="text" id="uidLink" readonly>
-<button class="btn" onclick="copyLink()">Copier le lien</button>
+  <script>
+    const name = localStorage.getItem("playerName") || "Joueur";
+    const score = localStorage.getItem("playerScore") || 0;
+    const uid = `${name.toLowerCase()}_${Math.floor(Math.random()*10000)}`;
+    
+    document.getElementById("player").textContent = name;
+    document.getElementById("score").textContent = score;
 
-<div class="share-section">
-<a href="#" target="_blank" id="shareWA">WhatsApp</a>
-<a href="#" target="_blank" id="shareFB">Facebook</a>
-<a href="#" target="_blank" id="shareIG">Instagram</a>
-<a href="#" target="_blank" id="shareTT">TikTok</a>
-</div>
-</section>
+    const shareText = `Je viens de jouer à *Le Jeu Pro*! 🔥 Mon score: ${score}/10. Viens essayer mon défi 👉`;
+    const shareURL = window.location.origin + window.location.pathname + "?uid=" + uid;
 
-<hr style="margin:30px 0; border:1px solid #fff; width:80%;">
-
-<section id="scoreTableSection">
-<h2>Classement des participants</h2>
-<table id="scoreTable">
-<tr><th>Nom</th><th>Score</th></tr>
-<!-- Les scores seront remplis par JS -->
-</table>
-</section>
-
-<br>
-<button class="btn" onclick="rejouer()">Rejouer</button>
-<button class="btn" onclick="creerDefi()">Créer votre propre défi</button>
-
-<audio id="music" src="assets/music.mp3" autoplay loop></audio>
-<button id="muteBtn">🔊 Couper le son</button>
-</main>
+    document.getElementById("whatsapp").href = `https://wa.me/?text=${encodeURIComponent(shareText + " " + shareURL)}`;
+    document.getElementById("facebook").href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareURL)}`;
+    document.getElementById("instagram").href = `https://www.instagram.com/?url=${encodeURIComponent(shareURL)}`;
+  </script>
 </body>
 </html>
