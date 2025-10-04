@@ -3,40 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Créer mon défi</title>
+<title>Questions - Crush Challenge</title>
 <link rel="stylesheet" href="css/style.css">
 <script src="js/script.js" defer></script>
 </head>
 <body>
 <header>
 <img src="assets/logo.png" class="logo pulse" alt="Logo">
-<h1>Créer votre défi Crush</h1>
+<h1>Réponds aux questions personnelles !</h1>
 </header>
 
 <main>
-<form id="hostForm">
-  <label>Votre nom :</label>
-  <input type="text" name="hostName" required><br>
-
-  <label>Couleur préférée :</label><input type="text" name="color"><br>
-  <label>Plat préféré :</label><input type="text" name="food"><br>
-  <label>Film préféré :</label><input type="text" name="movie"><br>
-  <label>Musique préférée :</label><input type="text" name="music"><br>
-  <label>Hobby préféré :</label><input type="text" name="hobby"><br>
-  <label>Animal préféré :</label><input type="text" name="animal"><br>
-  <label>Destination rêvée :</label><input type="text" name="travel"><br>
-  <label>Super-héros préféré :</label><input type="text" name="hero"><br>
-  <label>Chanson préférée :</label><input type="text" name="song"><br>
-  <label>Boisson préférée :</label><input type="text" name="drink"><br>
-
-  <button type="submit" class="btn pulse">Générer mon lien</button>
-</form>
-
-<div id="generatedLink" style="display:none">
-  <p>Lien à partager :</p>
-  <input type="text" id="hostLink" readonly>
-  <button onclick="copyLink()">📋 Copier le lien</button>
+<div class="progress-container">
+  <div class="progress-bar" id="progressBar"></div>
 </div>
+
+<form id="quizForm">
+
+<!-- 10 questions avec 4 choix -->
+<div class="question" data-q="1">
+<p>1/10 : Quelle est ta couleur préférée ?</p>
+<button type="button" class="optionBtn" data-answer="Rouge">Rouge</button>
+<button type="button" class="optionBtn" data-answer="Bleu">Bleu</button>
+<button type="button" class="optionBtn" data-answer="Vert">Vert</button>
+<button type="button" class="optionBtn" data-answer="Jaune">Jaune</button>
+</div>
+
+<div class="question" data-q="2" style="display:none">
+<p>2/10 : Quel est ton plat préféré ?</p>
+<button type="button" class="optionBtn" data-answer="Pizza">Pizza</button>
+<button type="button" class="optionBtn" data-answer="Sushi">Sushi</button>
+<button type="button" class="optionBtn" data-answer="Burger">Burger</button>
+<button type="button" class="optionBtn" data-answer="Salade">Salade</button>
+</div>
+
+<div class="question" data-q="3" style="display:none">
+<p>3/10 : Quel est ton animal préféré ?</p>
+<button type="button" class="optionBtn" data-answer="Chien">Chien</button>
+<button type="button" class="optionBtn" data-answer="Chat">Chat</button>
+<button type="button" class="optionBtn" data-answer="Oiseau">Oiseau</button>
+<button type="button" class="optionBtn" data-answer="Poisson">Poisson</button>
+</div>
+
+<div class="question" data-q="4" style="display:none">
+<p>4/10 : Quelle est ta saison préférée ?</p>
+<button type="button" class="optionBtn" data-answer="Été">Été</button>
+<button type="button" class="optionBtn" data-answer="Hiver">Hiver</button>
+<button type="button" class="optionBtn" data-answer="Printemps">Printemps</button>
+<button type="button" class="optionBtn" data-answer="Automne">Automne</button>
+</div>
+
+<div class="question" data-q="5" style="display:none">
+<p>5/10 : Quel est ton sport préféré ?</p>
+<button type="button" class="optionBtn" data-answer="Football">Football</button>
+<button type="button" class="optionBtn" data-answer="Basketball">Basketball</button>
+<button type="button" class="optionBtn" data-answer="Tennis">Tennis</button>
+<button type="button" class="optionBtn" data-answer="Natation">Natation</button>
+</div>
+
+<div class="question" data-q="6" style="display:none">
+<p>6/10 : Quel est ton film préféré ?</p>
+<button type="button" class="optionBtn" data-answer="Action">Action</button>
+<button type="button" class="optionBtn" data-answer="Comédie">Comédie</button>
+<button type="button" class="optionBtn" data-answer="Romance">Romance</button>
+<button type="button" class="optionBtn" data-answer="Horreur">Horreur</button>
+</div>
+
+<div class="question" data-q="7" style="display:none">
+<p>7/10 : Quel est ton fruit préféré ?</p>
+<button type="button" class="optionBtn" data-answer="Pomme">Pomme</button>
+<button type="button" class="optionBtn" data-answer="Banane">Banane</button>
+<button type="button" class="optionBtn" data-answer="Orange">Orange</button>
+<button type="button" class="optionBtn" data-answer="Fraise">Fraise</button>
+</div>
+
+<div class="question" data-q="8" style="display:none">
+<p>8/10 : Quel est ton dessert préféré ?</p>
+<button type="button" class="optionBtn" data-answer="Glace">Glace</button>
+<button type="button" class="optionBtn" data-answer="Gâteau">Gâteau</button>
+<button type="button" class="optionBtn" data-answer="Chocolat">Chocolat</button>
+<button type="button" class="optionBtn" data-answer="Fruits">Fruits</button>
+</div>
+
+<div class="question" data-q="9" style="display:none">
+<p>9/10 : Quelle musique écoutes-tu ?</p>
+<button type="button" class="optionBtn" data-answer="Pop">Pop</button>
+<button type="button" class="optionBtn" data-answer="Rap">Rap</button>
+<button type="button" class="optionBtn" data-answer="Rock">Rock</button>
+<button type="button" class="optionBtn" data-answer="Classique">Classique</button>
+</div>
+
+<div class="question" data-q="10" style="display:none">
+<p>10/10 : Quelle est ta boisson préférée ?</p>
+<button type="button" class="optionBtn" data-answer="Eau">Eau</button>
+<button type="button" class="optionBtn" data-answer="Jus">Jus</button>
+<button type="button" class="optionBtn" data-answer="Soda">Soda</button>
+<button type="button" class="optionBtn" data-answer="Café">Café</button>
+</div>
+
+</form>
 </main>
-</body> 
+</body>
 </html>
