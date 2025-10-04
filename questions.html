@@ -1,19 +1,31 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Questions - Le Jeu Pro</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Les Questions</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/logo.png" type="image/png">
 </head>
 <body>
-  <div class="container quiz">
-    <h2 id="question-title"></h2>
-    <div id="answers"></div>
-    <button id="nextBtn" style="display:none;">Suivant</button>
-    <p id="progress"></p>
-  </div>
 
-  <script src="script.js"></script>
+    <div id="quiz-container" class="page active">
+        <div class="card quiz-card">
+            <div class="header-quiz">
+                <span id="progression">1/10</span>
+            </div>
+            <h2 id="question-text"></h2>
+        
+            <div id="options-container" class="options-grid">
+                </div>
+
+            <button id="btn-question-suivante" class="bouton-principal" style="display:none;">Question Suivante</button>
+        </div>
+    </div>
+
+    <audio id="son-clic" src="assets/click.mp3" preload="auto"></audio>
+    <audio id="son-victoire" src="assets/victory.mp3" preload="auto"></audio>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
