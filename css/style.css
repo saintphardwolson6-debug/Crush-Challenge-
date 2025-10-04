@@ -1,0 +1,9 @@
+body{font-family:'Roboto Condensed',sans-serif;margin:0;padding:0;text-align:center;background:#111;color:#fff;}
+header{padding:20px;background:rgba(0,0,0,0.5);}
+.logo{width:120px;}
+h1 span{color:hotpink;}
+.btn{padding:12px 25px;margin:10px;background:#ff4757;color:#fff;border-radius:8px;text-decoration:none;display:inline-block;}
+.btn:hover{background:#e84118;}
+@keyframes pulse{0%{transform:scale(1);}50%{transform:scale(1.05);}100%{transform:scale(1);}}
+.pulse{animation:pulse 2s infinite;}
+.social-share a{margin:5px;font-size:24px;color:white;text-decoration:none;}
