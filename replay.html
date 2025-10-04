@@ -1,52 +1,30 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Résultats & Classement - Crush Challenge</title>
-<link rel="stylesheet" href="css/style.css">
-<script src="js/script.js" defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Crush-Challenge — Rejouer</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
-<canvas id="confetti"></canvas>
-<header>
-<img src="assets/logo.png" class="logo pulse" alt="Logo Crush Challenge">
-<h1>Félicitations <span id="hostName"></span> !</h1>
-</header>
+<body class="page-replay">
+  <main class="card">
+    <h2>Voulez-vous rejouer ?</h2>
+    <div class="controls">
+      <button id="playAgain" class="btn primary">Rejouer</button>
+      <button id="backHome" class="btn ghost">Retour à l'accueil</button>
+    </div>
+  </main>
 
-<main>
-<!-- SECTION RESULTAT HÔTE -->
-<section id="hostResult">
-<p>Vous avez obtenu : <span id="scoreDisplay"></span> points</p>
-<label for="uidLink">Lien de partage :</label>
-<input type="text" id="uidLink" readonly>
-<button class="btn" onclick="copyLink()">Copier le lien</button>
-
-<div class="share-section">
-<a href="#" target="_blank" id="shareWA">WhatsApp</a>
-<a href="#" target="_blank" id="shareFB">Facebook</a>
-<a href="#" target="_blank" id="shareIG">Instagram</a>
-<a href="#" target="_blank" id="shareTT">TikTok</a>
-</div>
-</section>
-
-<hr style="margin:30px 0; border:1px solid #fff; width:80%;">
-
-<!-- SECTION CLASSEMENT -->
-<section id="scoreTableSection">
-<h2>Classement des participants</h2>
-<table id="scoreTable">
-<tr><th>Nom</th><th>Score</th></tr>
-<!-- JS va remplir les lignes -->
-</table>
-</section>
-
-<br>
-<button class="btn" onclick="rejouer()">Rejouer</button>
-<button class="btn" onclick="creerDefi()">Créer votre propre défi</button>
-</main>
-
-<audio id="music" src="assets/music.mp3" autoplay loop></audio>
-<button id="muteBtn">🔊 Couper le son</button>
+  <script>
+    document.getElementById('playAgain').addEventListener('click', () => {
+      localStorage.removeItem('answers');
+      localStorage.removeItem('score');
+      localStorage.setItem('currentQ', '0');
+      window.location.href = 'host.html';
+    });
+    document.getElementById('backHome').addEventListener('click', () => {
+      window.location.href = 'index.html';
+    });
+  </script>
 </body>
 </html>
