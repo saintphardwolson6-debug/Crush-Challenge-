@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Crush Challenge - Accueil</title>
-<link rel="stylesheet" href="css/style.css">
-<script src="js/questions.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Le Jeu Pro</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<header>
-<img src="assets/logo.png" class="logo pulse" alt="Logo Crush Challenge">
-<h1>Bienvenue au Crush Challenge !</h1>
-</header>
+  <div class="container intro">
+    <h1 class="game-title">🎯 Le Jeu Pro</h1>
+    <p>Entrez votre nom pour commencer</p>
+    <input type="text" id="playerName" placeholder="Votre nom..." />
+    <button id="startBtn">Commencer</button>
+  </div>
 
-<main>
-<form id="startForm">
-<label for="playerName">Entrez votre nom :</label>
-<input type="text" id="playerName" required>
-<button type="submit" class="btn">Commencer ➡️</button>
-</form>
-
-<audio id="music" src="assets/music.mp3" autoplay loop></audio>
-<button id="muteBtn">🔊 Couper le son</button>
-</main>
+  <script>
+    document.getElementById("startBtn").addEventListener("click", () => {
+      const name = document.getElementById("playerName").value.trim();
+      if (!name) {
+        alert("Veuillez entrer votre nom !");
+        return;
+      }
+      localStorage.setItem("playerName", name);
+      window.location.href = "questions.html";
+    });
+  </script>
 </body>
 </html>
